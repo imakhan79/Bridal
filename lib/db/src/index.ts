@@ -5,30 +5,27 @@ import * as schema from "./schema";
 const { Pool } = pg;
 
 const databaseUrl = process.env.DATABASE_URL;
+const supabasePassword = process.env.SUPABASE_DB_PASSWORD;
 
-if (!databaseUrl) {
+if (!databaseUrl && !supabasePassword) {
   throw new Error(
     "DATABASE_URL must be set. Did you forget to provision a database?",
   );
 }
 
-const supabaseHost = "aws-1-ap-southeast-1.pooler.supabase.com";
-const isSupabasePooler = databaseUrl.includes(supabaseHost);
-
 let pool: pg.Pool;
 
-if (isSupabasePooler) {
-  const url = new URL(databaseUrl);
+if (supabasePassword) {
   pool = new Pool({
-    host: url.hostname,
-    port: Number(url.port) || 6543,
-    database: url.pathname.slice(1),
-    user: decodeURIComponent(url.username),
-    password: decodeURIComponent(url.password),
+    host: "aws-1-ap-southeast-1.pooler.supabase.com",
+    port: 6543,
+    database: "postgres",
+    user: "postgres.ilfnlwnsuwkjaunhyuzw",
+    password: supabasePassword,
     ssl: { rejectUnauthorized: false },
   });
 } else {
-  pool = new Pool({ connectionString: databaseUrl });
+  pool = new Pool({ connectionString: databaseUrl! });
 }
 
 export { pool };
