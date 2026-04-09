@@ -1,0 +1,142 @@
+Build a premium South Asian fashion e-commerce website that sells 
+Pakistani and Indian designer wear — including bridal lehengas, 
+formal suits, Eid collections, and couture pieces. The site should 
+feel luxurious, editorial, and trust-building.
+
+--- DESIGN STYLE ---
+- Elegant, high-fashion aesthetic: dark ivory/cream backgrounds, 
+  gold accents, rich jewel-toned highlights (teal, blush, burgundy)
+- Clean serif headings (e.g., Playfair Display) + sans-serif body text
+- Full-width editorial product photography
+- Subtle hover animations, soft shadows, smooth transitions
+- Mobile-first, fully responsive layout
+
+--- HEADER / NAVIGATION ---
+- Brand logo centered at top
+- Navigation: New Arrivals | Bridal | Eid Collection | Formal | 
+  Lehengas | Menswear | Sale
+- Top bar: "Free Worldwide Shipping on All Orders"
+- Icons: Search, Wishlist, Cart, Account
+- WhatsApp chat button (floating, bottom-right)
+- Currency/country switcher dropdown
+
+--- HERO SECTION ---
+- Full-width cinematic hero image or video (editorial bridal/formal shoot)
+- Headline: "Luxury South Asian Fashion — Delivered Worldwide"
+- Subheading: "Bridal. Formal. Festive. Crafted to perfection."
+- Two CTA buttons: "Shop Bridal" | "New Arrivals"
+
+--- FEATURED PRODUCT CARDS ---
+Each product card must display:
+- High-resolution image (hover shows second angle)
+- Designer/brand name (e.g., HSY, Azeera, Haseens Official)
+- Product name
+- Price (in user's local currency, e.g., $275 USD / PKR 76,500)
+- Fabric & occasion tags (e.g., "Raw Silk · Eid 2026")
+- "Request Quote" button (for price-on-request items)
+- Add to Wishlist (heart icon)
+- "In Stock" / "Made to Order" badge
+
+--- PRODUCT DETAIL PAGE ---
+- Multi-image gallery with zoom + video support (reels/styling videos)
+- Product title, brand, SKU
+- Price or "Price upon request" with WhatsApp CTA
+- Size selector: Small / Medium / Large / XLarge (or custom)
+- Key details section:
+  · Fabric (e.g., Chiffon, Raw Silk, Organza, Jamawar)
+  · Number of pieces (e.g., 4-piece: top + lehenga + dupatta + potli)
+  · Color options
+  · Embroidery details (Parisian, floral thread, antique gold work)
+  · Occasion (Bridal, Eid, Wedding Formal, Party)
+  · Delivery time (e.g., "8–12 weeks" or "Express dispatch")
+- Custom fit / color customization option
+- Measurement guide link + size chart popup
+- Shipping info: local (PKR 15,000) / international (PKR 100,000 or free)
+- "How We Make Your Order" accordion section (5-step process)
+- WhatsApp appointment / inquiry button
+- "You May Also Like" related products carousel
+
+--- COLLECTION / LISTING PAGE ---
+- Filterable product grid:
+  · Filter by: Occasion, Fabric, Color, Price Range, Designer, 
+    Piece Count, Season
+  · Sort by: Newest, Price Low–High, Featured
+- Pagination or infinite scroll
+- Category banners (e.g., "Pakistani Eid Dresses 2026")
+
+--- KEY SECTIONS ON HOMEPAGE ---
+1. NEW ARRIVALS strip (auto-scrolling carousel)
+2. SHOP BY OCCASION tiles:
+   Bridal | Eid | Wedding Guest | Mehendi | Walima | Party
+3. FEATURED DESIGNERS grid:
+   HSY | Azeera | Haseens Official | Nameera by Farooq
+4. EDITORIAL LOOKBOOK banner (full-width image + "Shop the Look")
+5. PROCESS TRUST SECTION — icons with text:
+   · Custom Made  · Color Choices  · Custom Fitting  
+   · Free Worldwide Shipping  · WhatsApp Support 24/7
+6. CUSTOMER REVIEWS section (star ratings + review text cards)
+7. INSTAGRAM FEED grid (6 posts, "Follow us @brandname")
+
+--- CONTACT / INQUIRY SYSTEM ---
+- WhatsApp floating button (primary inquiry method)
+- Inquiry form: Name, Email, Phone, Dress Interest, Message
+- Multiple regional phone numbers:
+  USA | UK | Canada | Australia | Pakistan
+- Measurement submission form ("Send Your Measurements" page)
+- Consultation call booking CTA
+
+--- PAGES TO INCLUDE ---
+1. Home
+2. /collections/bridal
+3. /collections/eid-2026
+4. /collections/formal
+5. /products/[product-name] (product detail)
+6. /pages/size-chart
+7. /pages/measurement-guide
+8. /pages/about-us
+9. /pages/shipping-policy
+10. /pages/return-policy
+11. /pages/contact-us
+12. /pages/how-we-make-your-order
+
+--- TRUST & CONVERSION FEATURES ---
+- "In Stock" / "Made to Order" / "Express" badges
+- Countdown timers for limited offers (e.g., "Eid Sale ends in...")
+- "Get up to 15% off on Bridal Orders — Call Today" sticky bar
+- Secure payment icons (Visa, Mastercard, PayPal, Stripe)
+- "US Based Business" / "Worldwide Delivery" trust badges
+- Cookie consent banner
+
+--- TECH STACK ---
+- Next.js + Tailwind CSS (or Shopify Liquid for direct deployment)
+- Shopify-compatible product schema
+- WhatsApp API integration for direct inquiry
+- Multi-currency support (PKR, USD, GBP, AED, AUD)
+- Lazy-loaded images + video (Cloudflare Stream or similar)
+- SEO-optimized product pages with structured data
+
+--- SAMPLE PRODUCTS TO POPULATE ---
+
+1. Azeera – Floral Thread Embroidered Lehenga Set (Peach Chiffon)
+   · 3-piece: Lehenga + Blouse + Dupatta
+   · Embroidery: Floral thread, sequins, peacock motifs
+   · Occasion: Bridal / Festive
+   · Link: azafashions.com/products/azeera-floral-thread-embroidered-lehenga-set/639117
+
+2. HSY – Parisian Embroidered Front Open Shirt with Lehenga & Dupatta
+   · Color: Pink + Antique Gold
+   · Fabric: Organza shirt + Raw Silk lehenga + Organza dupatta
+   · Delivery: 8–12 weeks | Price on request
+   · Link: theworldofhsy.com/products/parisian-embroidered-front-open-shirt-with-lehenga-dupatta
+
+3. Nameera by Farooq – Embroidered Raw Silk Pakistani Eid Dress with Dupatta
+   · 3-piece: Embroidered shirt + trousers + net dupatta
+   · Sizes: S / M / L / XL — $275 USD
+   · Custom made, free US shipping
+   · Link: nameerabyfarooq.com/products/embroidered-raw-silk-pakistani-eid-dress-with-dupatta-new-2026
+
+4. Haseens Official – Zulaikha (Chiffon Lehenga in Teal)
+   · 4-piece: Top + Lehenga + Chiffon dupatta + Potli
+   · Bottom: Flared lehenga in Jamawar
+   · Express dispatch available
+   · Link: laam.pk/products/zulaikha

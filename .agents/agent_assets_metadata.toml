@@ -1,0 +1,50 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "RfR5AIW1pqFCYkQnz3kK6"
+uri = "file://artifacts/south-asian-fashion/public/images/hero-bg.png"
+type = "image"
+title = "Bridal formal editorial shoot"
+
+[[generated]]
+id = "LHDxlMuGFO420ChdSw4Nk"
+uri = "file://artifacts/south-asian-fashion/public/images/occasion-bridal.png"
+type = "image"
+title = "Bridal occasion tile"
+
+[[generated]]
+id = "sIIygxzQ-G2xMH3pcKYSP"
+uri = "file://artifacts/south-asian-fashion/public/images/occasion-eid.png"
+type = "image"
+title = "Eid occasion tile"
+
+[[generated]]
+id = "MM1mwcDPz0cn_o_p6Dxrq"
+uri = "file://artifacts/south-asian-fashion/public/images/occasion-guest.png"
+type = "image"
+title = "Wedding Guest occasion tile"
+
+[[generated]]
+id = "hRf_cB0OGSB3BlWVtXN7_"
+uri = "file://artifacts/south-asian-fashion/public/images/occasion-mehendi.png"
+type = "image"
+title = "Mehendi occasion tile"
+
+[[generated]]
+id = "6V3wEg6yCfZsopmAsJ9nG"
+uri = "file://artifacts/south-asian-fashion/public/images/occasion-walima.png"
+type = "image"
+title = "Walima occasion tile"
+
+[[generated]]
+id = "X8jZ24gU1LVj9OT43YVIn"
+uri = "file://artifacts/south-asian-fashion/public/images/occasion-party.png"
+type = "image"
+title = "Party occasion tile"
+
+[[generated]]
+id = "rSpQH7rtoanIskSqLxJH4"
+uri = "file://artifacts/south-asian-fashion/public/images/lookbook-banner.png"
+type = "image"
+title = "Lookbook banner editorial"

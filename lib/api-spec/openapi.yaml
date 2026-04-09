@@ -3,20 +3,28 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: South Asian Fashion E-Commerce API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: products
+    description: Product operations
+  - name: collections
+    description: Collection operations
+  - name: designers
+    description: Designer operations
+  - name: inquiries
+    description: Inquiry / contact operations
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +32,266 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /products:
+    get:
+      operationId: listProducts
+      tags: [products]
+      summary: List products with optional filters
+      parameters:
+        - name: occasion
+          in: query
+          schema:
+            type: string
+        - name: fabric
+          in: query
+          schema:
+            type: string
+        - name: color
+          in: query
+          schema:
+            type: string
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+        - name: designer
+          in: query
+          schema:
+            type: string
+        - name: collection
+          in: query
+          schema:
+            type: string
+        - name: season
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [newest, price_asc, price_desc, featured]
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                  total:
+                    type: integer
+                required: [products, total]
+
+  /products/featured:
+    get:
+      operationId: getFeaturedProducts
+      tags: [products]
+      summary: Get featured products for homepage
+      responses:
+        "200":
+          description: Featured products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                required: [products]
+
+  /products/new-arrivals:
+    get:
+      operationId: getNewArrivals
+      tags: [products]
+      summary: Get new arrivals
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: New arrivals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                required: [products]
+
+  /products/{slug}:
+    get:
+      operationId: getProduct
+      tags: [products]
+      summary: Get a single product by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Product detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Not found
+
+  /products/{slug}/related:
+    get:
+      operationId: getRelatedProducts
+      tags: [products]
+      summary: Get related products
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Related products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                required: [products]
+
+  /collections:
+    get:
+      operationId: listCollections
+      tags: [collections]
+      summary: List all collections
+      responses:
+        "200":
+          description: Collections list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collections:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Collection"
+                required: [collections]
+
+  /collections/{slug}:
+    get:
+      operationId: getCollection
+      tags: [collections]
+      summary: Get a collection and its products
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Collection detail with products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collection:
+                    $ref: "#/components/schemas/Collection"
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+                required: [collection, products]
+
+  /designers:
+    get:
+      operationId: listDesigners
+      tags: [designers]
+      summary: List all featured designers
+      responses:
+        "200":
+          description: Designers list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  designers:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Designer"
+                required: [designers]
+
+  /inquiries:
+    post:
+      operationId: createInquiry
+      tags: [inquiries]
+      summary: Submit a product inquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateInquiryBody"
+      responses:
+        "201":
+          description: Inquiry submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Inquiry"
+
+  /reviews:
+    get:
+      operationId: listReviews
+      tags: [products]
+      summary: Get featured customer reviews
+      responses:
+        "200":
+          description: Reviews list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reviews:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Review"
+                required: [reviews]
+
 components:
   schemas:
     HealthStatus:
@@ -31,6 +299,182 @@ components:
       properties:
         status:
           type: string
-      required:
-        - status
+      required: [status]
 
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        slug:
+          type: string
+        name:
+          type: string
+        brand:
+          type: string
+        sku:
+          type: string
+        description:
+          type: string
+        priceUsd:
+          type: number
+          nullable: true
+        pricePkr:
+          type: number
+          nullable: true
+        priceOnRequest:
+          type: boolean
+        images:
+          type: array
+          items:
+            type: string
+        fabric:
+          type: string
+        pieces:
+          type: integer
+        colors:
+          type: array
+          items:
+            type: string
+        embroidery:
+          type: string
+        occasion:
+          type: string
+        season:
+          type: string
+        deliveryTime:
+          type: string
+        availability:
+          type: string
+          enum: [in_stock, made_to_order, express]
+        isNew:
+          type: boolean
+        isFeatured:
+          type: boolean
+        tags:
+          type: array
+          items:
+            type: string
+        collection:
+          type: string
+          nullable: true
+        sizes:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+      required:
+        - id
+        - slug
+        - name
+        - brand
+        - sku
+        - description
+        - priceOnRequest
+        - images
+        - fabric
+        - pieces
+        - colors
+        - embroidery
+        - occasion
+        - season
+        - deliveryTime
+        - availability
+        - isNew
+        - isFeatured
+        - tags
+        - sizes
+        - createdAt
+
+    Collection:
+      type: object
+      properties:
+        id:
+          type: integer
+        slug:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        bannerImage:
+          type: string
+        productCount:
+          type: integer
+      required: [id, slug, name, description, bannerImage, productCount]
+
+    Designer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        logoImage:
+          type: string
+        coverImage:
+          type: string
+        productCount:
+          type: integer
+      required: [id, name, slug, description, logoImage, coverImage, productCount]
+
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        customerName:
+          type: string
+        location:
+          type: string
+        rating:
+          type: integer
+        text:
+          type: string
+        productName:
+          type: string
+        avatarUrl:
+          type: string
+          nullable: true
+      required: [id, customerName, location, rating, text, productName]
+
+    CreateInquiryBody:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        dressInterest:
+          type: string
+        message:
+          type: string
+      required: [name, email, message]
+
+    Inquiry:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+          nullable: true
+        dressInterest:
+          type: string
+          nullable: true
+        message:
+          type: string
+        createdAt:
+          type: string
+      required: [id, name, email, message, createdAt]
