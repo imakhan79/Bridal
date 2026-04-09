@@ -98,15 +98,14 @@ productsRouter.get("/:slug/related", async (req, res) => {
     if (product.length === 0) {
       return res.status(404).json({ error: "Product not found" });
     }
-    const related = await db
+    const allOthers = await db
       .select()
       .from(productsTable)
-      .where(and(eq(productsTable.occasion, product[0].occasion), eq(productsTable.slug, slug)))
-      .limit(4);
-
-    const fallback = await db.select().from(productsTable).orderBy(desc(productsTable.isFeatured)).limit(4);
-    const results = related.length > 0 ? related : fallback;
-    res.json({ products: results.filter((p) => p.slug !== slug).slice(0, 4).map(serializeProduct) });
+      .orderBy(desc(productsTable.isFeatured));
+    const sameOccasion = allOthers.filter((p) => p.slug !== slug && p.occasion === product[0].occasion);
+    const fallback = allOthers.filter((p) => p.slug !== slug);
+    const results = sameOccasion.length >= 2 ? sameOccasion : fallback;
+    res.json({ products: results.slice(0, 4).map(serializeProduct) });
   } catch (err) {
     req.log.error({ err }, "Error getting related products");
     res.status(500).json({ error: "Internal server error" });
